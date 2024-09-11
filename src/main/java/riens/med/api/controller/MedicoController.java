@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @RequestMapping("/medicos")
 public class MedicoController {
-    
+
     @Autowired
     private MedicoRepository medicoRepository;
 
@@ -36,14 +36,14 @@ public class MedicoController {
     }
 
     @GetMapping
-    public Page<DadosListagemMedico> listarMedicos(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
+    public Page<DadosListagemMedico> listarMedicos(@PageableDefault(size = 10, sort = { "nome" }) Pageable paginacao) {
         return medicoRepository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
-    public void atualizarMedico(@RequestBody @Valid DadosAtualizacaoMedico dados) {
-        var medico = medicoRepository.getReferenceById(dados.id());
+    public void atualizarMedico(@PathVariable Long id, @RequestBody DadosAtualizacaoMedico dados) {
+        var medico = medicoRepository.getReferenceById(id);
         medico.atualizarInformacoes(dados);
     }
 
