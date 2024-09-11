@@ -53,7 +53,5 @@ public class MedicoController {
         var medico = medicoRepository.getReferenceById(id);
         medico.desativar();
     }
-    
-
 
 }
