@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import riens.med.api.paciente.DadosAtualizacaoPaciente;
 import riens.med.api.paciente.DadosCadastroPaciente;
 import riens.med.api.paciente.DadosListagemPaciente;
 import riens.med.api.paciente.Paciente;
@@ -16,13 +17,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-
-
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
-    
+
     @Autowired
     private PacienteRepository pacienteRepository;
 
@@ -35,5 +36,12 @@ public class PacienteController {
     @GetMapping
     public Page<DadosListagemPaciente> listarPacientes(Pageable paginacao) {
         return pacienteRepository.findAllByAtivoTrue(paginacao).map(DadosListagemPaciente::new);
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public void atualizarPaciente(@PathVariable Long id, @RequestBody DadosAtualizacaoPaciente dados) {
+        var paciente = pacienteRepository.getReferenceById(id);
+        paciente.atualizar(dados);
     }
 }
