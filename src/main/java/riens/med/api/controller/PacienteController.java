@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,5 +44,12 @@ public class PacienteController {
     public void atualizarPaciente(@PathVariable Long id, @RequestBody DadosAtualizacaoPaciente dados) {
         var paciente = pacienteRepository.getReferenceById(id);
         paciente.atualizar(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deletaPaciente(@PathVariable Long id) {
+        var paciente = pacienteRepository.getReferenceById(id);
+        paciente.desativar();
     }
 }
