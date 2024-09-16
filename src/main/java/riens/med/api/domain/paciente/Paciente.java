@@ -1,4 +1,4 @@
-package riens.med.api.paciente;
+package riens.med.api.domain.paciente;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import riens.med.api.endereco.Endereco;
+import riens.med.api.domain.endereco.Endereco;
 
 @Table(name = "pacientes")
 @Entity(name = "Paciente")

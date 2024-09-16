@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import riens.med.api.paciente.DadosAtualizacaoPaciente;
-import riens.med.api.paciente.DadosCadastroPaciente;
-import riens.med.api.paciente.DadosListagemPaciente;
-import riens.med.api.paciente.Paciente;
-import riens.med.api.paciente.PacienteRepository;
+import riens.med.api.domain.paciente.DadosAtualizacaoPaciente;
+import riens.med.api.domain.paciente.DadosCadastroPaciente;
+import riens.med.api.domain.paciente.DadosListagemPaciente;
+import riens.med.api.domain.paciente.Paciente;
+import riens.med.api.domain.paciente.PacienteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;

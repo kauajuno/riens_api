@@ -1,6 +1,6 @@
-package riens.med.api.paciente;
+package riens.med.api.domain.paciente;
 
-public record DadosListagemPaciente (Long id, String nome, String email) {
+public record DadosListagemPaciente(Long id, String nome, String email) {
     public DadosListagemPaciente(Paciente paciente) {
         this(paciente.getId(), paciente.getNome(), paciente.getEmail());
     }

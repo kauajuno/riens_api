@@ -1,11 +1,11 @@
-package riens.med.api.medico;
+package riens.med.api.domain.medico;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import riens.med.api.endereco.Endereco;
+import riens.med.api.domain.endereco.Endereco;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")
@@ -15,7 +15,9 @@ import riens.med.api.endereco.Endereco;
 @EqualsAndHashCode(of = "id")
 public class Medico {
     // JPA Entity
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(insertable=false, updatable=false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(insertable = false, updatable = false)
     private Long id;
     private String nome;
     private String email;
@@ -51,7 +53,7 @@ public class Medico {
         }
     }
 
-    public void desativar(){
+    public void desativar() {
         this.ativo = false;
     }
 }

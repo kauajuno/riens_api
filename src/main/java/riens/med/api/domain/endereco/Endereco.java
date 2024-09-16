@@ -1,4 +1,4 @@
-package riens.med.api.endereco;
+package riens.med.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Endereco {
-        
+
     private Long id;
     private String logradouro;
     private String bairro;
@@ -32,7 +32,7 @@ public class Endereco {
         this.complemento = dados.complemento();
     }
 
-    public void atualizarInformacoes(DadosEndereco endereco){
+    public void atualizarInformacoes(DadosEndereco endereco) {
         if (endereco.logradouro() != null) {
             this.logradouro = endereco.logradouro();
         }
@@ -55,5 +55,5 @@ public class Endereco {
             this.complemento = endereco.complemento();
         }
     }
-    
+
 }

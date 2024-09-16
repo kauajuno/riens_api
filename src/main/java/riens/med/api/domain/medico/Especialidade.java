@@ -1,4 +1,4 @@
-package riens.med.api.medico;
+package riens.med.api.domain.medico;
 
 public enum Especialidade {
     ORTOPEDIA,

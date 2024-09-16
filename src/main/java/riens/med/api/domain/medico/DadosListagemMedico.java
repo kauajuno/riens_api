@@ -1,4 +1,4 @@
-package riens.med.api.medico;
+package riens.med.api.domain.medico;
 
 public record DadosListagemMedico(Long id, String nome, String crm, String email, Especialidade especialidade) {
     public DadosListagemMedico(Medico medico) {
