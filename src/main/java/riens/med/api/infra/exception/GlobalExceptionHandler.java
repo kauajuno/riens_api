@@ -1,4 +1,4 @@
-package riens.med.api.infra;
+package riens.med.api.infra.exception;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.web.client.HttpClientErrorException.NotFound;
 import jakarta.persistence.EntityNotFoundException;
 
 @RestControllerAdvice
-public class ErrorHandler {
+public class GlobalExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<NotFound> handle404() {
         return ResponseEntity.notFound().build();
