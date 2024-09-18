@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 
 import java.time.LocalDateTime;
 import java.time.Instant;
@@ -35,6 +36,19 @@ public class TokenService {
 
         } catch (Exception e) {
             throw new RuntimeException("Erro ao gerar token");
+        }
+    }
+
+    public String getSubject(String tokenJWT) {
+        try {
+            var algoritmo = Algorithm.HMAC256(secret);
+            return JWT.require(algoritmo)
+                    .withIssuer("Riens API")
+                    .build()
+                    .verify(tokenJWT)
+                    .getSubject();
+        } catch (JWTVerificationException e) {
+            throw new RuntimeException("Token expirado.");
         }
     }
 }
