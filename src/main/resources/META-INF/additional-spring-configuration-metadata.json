@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "riens.security.api.secret",
+      "type": "java.lang.String",
+      "description": "Secret key for JWT token generation"
+    }
+  ]
+}
